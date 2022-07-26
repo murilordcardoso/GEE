@@ -1,0 +1,289 @@
+// Script criado para fazer download de várias imagens de anos 
+// diferentes para uma mesma localidade a fim de se obter um histórico
+// de uso e cobertura daquela área.
+// Autor: Murilo Cardoso (AcadGEO)
+
+
+//definir área de interesse
+var area = ee.FeatureCollection ('users/murilordcardoso/perimetro_propriedade') //colocar aqui a feature da área de interesse
+var ponto = ee.FeatureCollection ('users/murilordcardoso/ponto_denuncia') // ponto ou outra feature de interesse
+var areamap = ee.FeatureCollection ('users/murilordcardoso/perimetro_propriedade') //colocar aqui a feature da área de interesse
+//Map.addLayer(ponto)
+//Map.addLayer(area)
+
+//definir buffer da área
+area = area.map(function(f){
+  return f.buffer(1000) //mudar esse número para definir buffer
+})
+//Map.addLayer(bufferzone)
+
+//---------------------------------2022-------------------------------------------------------
+//importar imagem do ano de 2022
+var l9 = ee.ImageCollection ('LANDSAT/LC09/C02/T1_TOA')
+var l9_2022 = l9.filterBounds(area)
+l9_2022 = l9_2022.filterDate('2022-07-01', '2022-09-01') // período da imagem
+l9_2022 = l9_2022.median()
+l9_2022 = l9_2022.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.03, 0.03, 0.03], max: [0.14, 0.14, 0.14]};
+
+Map.centerObject(area, 13) // definir a escala do zoom -> quanto menor o número, maior o zoom
+
+//mostrar imagem do ano de 2022 no mapa
+Map.addLayer(l9_2022,visParams,'2022', true)
+
+
+//---------------------------------2021-------------------------------------------------------
+//importar imagem do ano de 2021
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2021 = l8.filterBounds(area)
+l8_2021 = l8_2021.filterDate('2021-07-01', '2021-09-01') // período da imagem
+l8_2021 = l8_2021.median()
+l8_2021 = l8_2021.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.03, 0.03, 0.03], max: [0.14, 0.14, 0.14]};
+
+//mostrar imagem do ano de 2021 no mapa
+Map.addLayer(l8_2021,visParams,'2021', true)
+
+
+//---------------------------------2020-------------------------------------------------------
+//importar imagem do ano de 2020
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2020 = l8.filterBounds(area)
+l8_2020 = l8_2020.filterDate('2020-07-01', '2020-09-01') // período da imagem
+l8_2020 = l8_2020.median()
+l8_2020 = l8_2020.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.03, 0.03, 0.03], max: [0.14, 0.14, 0.14]};
+
+//mostrar imagem do ano de 2020 no mapa
+Map.addLayer(l8_2020,visParams,'2020', true)
+
+
+//---------------------------------2019-------------------------------------------------------
+//importar imagem do ano de 2019
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2019 = l8.filterBounds(area)
+l8_2019 = l8_2019.filterDate('2019-07-01', '2019-09-01') // período da imagem
+l8_2019 = l8_2019.median()
+l8_2019 = l8_2019.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.03, 0.03, 0.03], max: [0.14, 0.14, 0.14]};
+
+//mostrar imagem do ano de 2019 no mapa
+Map.addLayer(l8_2019,visParams,'2019', true)
+
+
+//---------------------------------2018-------------------------------------------------------
+//importar imagem do ano de 2018
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2018 = l8.filterBounds(area)
+l8_2018 = l8_2018.filterDate('2018-07-01', '2018-09-01') // período da imagem
+l8_2018 = l8_2018.median()
+l8_2018 = l8_2018.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.03, 0.03, 0.03], max: [0.14, 0.14, 0.14]};
+
+//mostrar imagem do ano de 2018 no mapa
+Map.addLayer(l8_2018,visParams,'2018', true)
+
+
+//---------------------------------2017-------------------------------------------------------
+//importar imagem do ano de 2017
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2017 = l8.filterBounds(area)
+l8_2017 = l8_2017.filterDate('2017-07-01', '2017-09-01') // período da imagem
+l8_2017 = l8_2017.median()
+l8_2017 = l8_2017.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.03, 0.03, 0.03], max: [0.14, 0.14, 0.14]};
+
+//mostrar imagem do ano de 2017 no mapa
+Map.addLayer(l8_2017,visParams,'2017', true)
+
+
+//---------------------------------2016-------------------------------------------------------
+//importar imagem do ano de 2016
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2016 = l8.filterBounds(area)
+l8_2016 = l8_2016.filterDate('2016-07-01', '2016-09-01') // período da imagem
+l8_2016 = l8_2016.median()
+l8_2016 = l8_2016.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2016 no mapa
+Map.addLayer(l8_2016,visParams,'2016', true)
+
+
+//---------------------------------2015-------------------------------------------------------
+//importar imagem do ano de 2015
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2015 = l8.filterBounds(area)
+l8_2015 = l8_2015.filterDate('2015-07-01', '2015-09-01') // período da imagem
+l8_2015 = l8_2015.median()
+l8_2015 = l8_2015.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2015 no mapa
+Map.addLayer(l8_2015,visParams,'2015', true)
+
+
+//---------------------------------2014-------------------------------------------------------
+//importar imagem do ano de 2014
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2014 = l8.filterBounds(area)
+l8_2014 = l8_2014.filterDate('2014-07-01', '2014-09-01') // período da imagem
+l8_2014 = l8_2014.median()
+l8_2014 = l8_2014.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2014 no mapa
+Map.addLayer(l8_2014,visParams,'2014', true)
+
+
+//---------------------------------2013-------------------------------------------------------
+//importar imagem do ano de 2013
+var l8 = ee.ImageCollection ('LANDSAT/LC08/C02/T1_TOA')
+var l8_2013 = l8.filterBounds(area)
+l8_2013 = l8_2013.filterDate('2013-07-01', '2013-09-01') // período da imagem
+l8_2013 = l8_2013.median()
+l8_2013 = l8_2013.clip(area)
+var visParams = {bands:['B4', 'B3', 'B2'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2013 no mapa
+Map.addLayer(l8_2013,visParams,'2013', true)
+
+
+//---------------------------------2012-------------------------------------------------------
+//importar imagem do ano de 2012
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA')
+var l5_2012 = l5.filterBounds(area)
+l5_2012 = l5_2012.filterDate('2012-07-01', '2012-09-01') // período da imagem
+l5_2012 = l5_2012.median()
+l5_2012 = l5_2012.clip(area)
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2012 no mapa
+Map.addLayer(l5_2012,visParams,'2012', true)
+
+
+//---------------------------------2011-------------------------------------------------------
+//importar imagem do ano de 2011
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA')
+var l5_2011 = l5.filterBounds(area)
+l5_2011 = l5_2011.filterDate('2011-07-01', '2011-09-01') // período da imagem
+l5_2011 = l5_2011.median()
+l5_2011 = l5_2011.clip(area)
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2011 no mapa
+Map.addLayer(l5_2011,visParams,'2011', true)
+
+
+//---------------------------------2010-------------------------------------------------------
+//importar imagem do ano de 2010
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA')
+var l5_2010 = l5.filterBounds(area)
+l5_2010 = l5_2010.filterDate('2010-07-01', '2010-09-01') // período da imagem
+l5_2010 = l5_2010.median()
+l5_2010 = l5_2010.clip(area)
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2010 no mapa
+Map.addLayer(l5_2010,visParams,'2010', true)
+
+
+//---------------------------------2009-------------------------------------------------------
+//importar imagem do ano de 2009
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA')
+var l5_2009 = l5.filterBounds(area)
+l5_2009 = l5_2009.filterDate('2009-07-01', '2009-09-01') // período da imagem
+l5_2009 = l5_2009.median()
+l5_2009 = l5_2009.clip(area)
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2009 no mapa
+Map.addLayer(l5_2009,visParams,'2009', true)
+
+
+//---------------------------------2008-------------------------------------------------------
+//importar imagem do ano de 2008
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA')
+var l5_2008 = l5.filterBounds(area)
+l5_2008 = l5_2008.filterDate('2008-07-01', '2008-09-01') // período da imagem
+l5_2008 = l5_2008.median()
+l5_2008 = l5_2008.clip(area)
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2008 no mapa
+Map.addLayer(l5_2008,visParams,'2008', true)
+
+
+//---------------------------------2007-------------------------------------------------------
+//importar imagem do ano de 2007
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA')
+var l5_2007 = l5.filterBounds(area)
+l5_2007 = l5_2007.filterDate('2007-07-01', '2007-09-01') // período da imagem
+l5_2007 = l5_2007.median();
+l5_2007 = l5_2007.clip(area);
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2007 no mapa
+Map.addLayer(l5_2007,visParams,'2007', true);
+
+
+//---------------------------------2006-------------------------------------------------------
+//importar imagem do ano de 2006
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA');
+var l5_2006 = l5.filterBounds(area);
+l5_2006 = l5_2006.filterDate('2006-07-01', '2006-09-01'); // período da imagem
+l5_2006 = l5_2006.median();
+l5_2006 = l5_2006.clip(area);
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2006 no mapa
+Map.addLayer(l5_2006,visParams,'2006', true);
+
+
+//---------------------------------2005-------------------------------------------------------
+//importar imagem do ano de 2005
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA');
+var l5_2005 = l5.filterBounds(area);
+l5_2005 = l5_2005.filterDate('2005-07-01', '2005-09-01'); // período da imagem
+l5_2005 = l5_2005.median();
+l5_2005 = l5_2005.clip(area);
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2005 no mapa
+Map.addLayer(l5_2005,visParams,'2005', true);
+
+
+//---------------------------------2004-------------------------------------------------------
+//importar imagem do ano de 2004
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA');
+var l5_2004 = l5.filterBounds(area);
+l5_2004 = l5_2004.filterDate('2004-07-01', '2004-09-01'); // período da imagem
+l5_2004 = l5_2004.median();
+l5_2004 = l5_2004.clip(area);
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2004 no mapa
+Map.addLayer(l5_2004,visParams,'2004', true);
+
+
+//importar imagem do ano de 2003
+var l5 = ee.ImageCollection ('LANDSAT/LT05/C02/T1_TOA');
+var l5_2003 = l5.filterBounds(area);
+l5_2003 = l5_2003.filterDate('2003-07-01', '2003-09-01'); // período da imagem
+l5_2003 = l5_2003.median();
+l5_2003 = l5_2003.clip(area);
+var visParams = {bands:['B3', 'B2', 'B1'], min: [0.04, 0.04, 0.04], max: [0.15, 0.15, 0.15]};
+
+//mostrar imagem do ano de 2003 no mapa
+Map.addLayer(l5_2003,visParams,'2003', true);
+
+Map.addLayer(ponto)
+Map.addLayer(areamap)
+
+Export.image.toDrive({
+  image: l9_2022, // indicar qual imagem será exportada
+  description: 'imagem_2022',
+  region: area,
+  scale: 30,
+  crs: 'EPSG:4326'
+})
