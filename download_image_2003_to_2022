@@ -1,7 +1,8 @@
 // Script criado para fazer download de várias imagens de anos 
 // diferentes para uma mesma localidade a fim de se obter um histórico
-// de uso e cobertura daquela área.
+// de uso e cobertura do solo daquela área.
 // Autor: Murilo Cardoso (AcadGEO)
+// Linguagem: JavaScript
 
 
 //definir área de interesse
